@@ -82,6 +82,8 @@ Route::get('/reporting/print', 'ReportingController@printPdf');
 
 Route::get('/shopping', 'ShoppingController@ListProduk');
 Route::get('/shopping/cart', 'ShoppingController@cart');
+Route::get('/shopping/cart/plus', 'ShoppingController@plusProduk');
+Route::get('/shopping/cart/minus', 'ShoppingController@minusProduk');
 Route::get('/shopping/cart/checkout/{notaId}', 'ShoppingController@checkout');
 
 Route::get('/invoice', 'InvoiceController@index');

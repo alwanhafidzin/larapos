@@ -75,4 +75,34 @@ class ShoppingController extends Controller
         DB::update("UPDATE nota SET status_transaksi='sukses' WHERE id=?", [$notaId]);
         return redirect('/shopping');
     }
+
+    public function plusProduk(Request $request){
+        $cart = DB::selectOne("SELECT kuantitas FROM keranjang WHERE produk_id=?", [$request->get('produkId')]);
+        $qty = $cart->kuantitas + 1;
+        $produk = DB::selectOne("SELECT id, nama, harga FROM produk WHERE id=?", [
+            $request->get('produkId')
+        ]);
+        $kuantitas = DB::update("UPDATE keranjang SET kuantitas=?, subtotal=? WHERE produk_id=?", [
+            $qty, $qty * $produk->harga,
+            $request->get('produkId')
+        ]);
+        echo $qty;
+        echo $kuantitas;
+        return redirect('/shopping/cart');
+    }
+
+    public function minusProduk(Request $request){
+        $cart = DB::selectOne("SELECT kuantitas FROM keranjang WHERE produk_id=?", [$request->get('produkId')]);
+        $qty = $cart->kuantitas - 1;
+        $produk = DB::selectOne("SELECT id, nama, harga FROM produk WHERE id=?", [
+            $request->get('produkId')
+        ]);
+        $kuantitas = DB::update("UPDATE keranjang SET kuantitas=?, subtotal=? WHERE produk_id=?", [
+            $qty, $qty * $produk->harga,
+            $request->get('produkId')
+        ]);
+        echo $qty;
+        echo $kuantitas;
+        return redirect('/shopping/cart');
+    }
 }

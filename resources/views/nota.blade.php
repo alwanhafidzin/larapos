@@ -42,7 +42,7 @@
             <div class="row align-items-center half-screen space">
                 <div class="container">
                     <div class="row mb-4">
-                        <div class="col-md-6">
+                        <div class="col-md-10">
                             <h4 class="mb-3 text-capitalize">Nota {{$nota->jenis_faktur}}</h4>
                             <table>
                                 <tr>
@@ -59,7 +59,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="col-mb-6 text-right">
+                        <div class="col-mb-2 text-right">
                             <img src="{{url('/assets/image/logo.png')}}" width="100">
                         </div>
                     </div>
